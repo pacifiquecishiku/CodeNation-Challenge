@@ -15,7 +15,7 @@
     <script>
         function sendData() {
             let XHR = new XMLHttpRequest();
-            XHR.open('POST', 'https://api.codenation.dev/v1/challenge/dev-ps/submit-solution?token=83ca049a9b840e7c1a64b0dc1d68c8f721e8bbca');
+            XHR.open('POST', 'https://api.codenation.dev/v1/challenge/dev-ps/submit-solution?token=...');
 
             if (!XHR) {
                 throw new Error('CORS not supported');
@@ -40,7 +40,7 @@
                 "numero_casas": 8,
                 "cifrado": "i kwuxcbmz xzwoziu lwma epib gwc bmtt qb bw lw, vwb epib gwc eivb qb bw lw. cvsvwev",
                 "decifrado": "a computer program does what you tell it to do, not what you want it to do. unknown",
-                "token": "83ca049a9b840e7c1a64b0dc1d68c8f721e8bbca"
+                "token": "..."
             }], { type: "application/json" });
             let form_data = new FormData();
             let form_data2 = new FormData();
@@ -56,7 +56,7 @@
             /*let answer;
             formulaire.onsubmit = async (e) => {
                 e.preventDefault();
-                answer = await fetch('https://api.codenation.dev/v1/challenge/dev-ps/submit-solution?token=83ca049a9b840e7c1a64b0dc1d68c8f721e8bbca',{
+                answer = await fetch('https://api.codenation.dev/v1/challenge/dev-ps/submit-solution?token=...',{
                     method:'POST',
                     body: new FormData(formulaire)
                 });
