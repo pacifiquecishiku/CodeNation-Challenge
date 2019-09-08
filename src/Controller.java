@@ -29,7 +29,7 @@ public class Controller {
     private HttpURLConnection http_url_connection;
 
     public Controller() throws MalformedURLException, IOException, NoSuchAlgorithmException {
-        url = new URL("https://api.codenation.dev/v1/challenge/dev-ps/generate-data?token=83ca049a9b840e7c1a64b0dc1d68c8f721e8bbca");
+        url = new URL("https://api.codenation.dev/v1/challenge/dev-ps/generate-data?token=...");
         http_url_connection = (HttpURLConnection) url.openConnection();
 
         InputStream input = http_url_connection.getInputStream();
