@@ -14,7 +14,8 @@
 
     <script>
         function sendData() {
-            let XHR = createCORSRequest('POST', 'https://api.codenation.dev/v1/challenge/dev-ps/submit-solution?token=83ca049a9b840e7c1a64b0dc1d68c8f721e8bbca');
+            let XHR = new XMLHttpRequest();
+            XHR.open('POST', 'https://api.codenation.dev/v1/challenge/dev-ps/submit-solution?token=83ca049a9b840e7c1a64b0dc1d68c8f721e8bbca');
 
             if (!XHR) {
                 throw new Error('CORS not supported');
@@ -25,7 +26,7 @@
             XHR.setRequestHeader('Content-Type', 'multipart/form-data');
 
             // Finalement, envoyez les données.
-            /**let answer = JSON.stringify({
+            /*let json = JSON.stringify({
                 resumo_criptografico: "6fa8f018cf1ad550715378cc33a67c23edcb88e5",
                 numero_casas: 8,
                 cifrado: "i kwuxcbmz xzwoziu lwma epib gwc bmtt qb bw lw, vwb epib gwc eivb qb bw lw. cvsvwev",
@@ -34,13 +35,24 @@
             });
             */
             //let answer = $("#resposta");
-            //let form_data = new FormData(document.forms.monForm);
+            var b = new Blob([{
+                "resumo_criptografico": "6fa8f018cf1ad550715378cc33a67c23edcb88e5",
+                "numero_casas": 8,
+                "cifrado": "i kwuxcbmz xzwoziu lwma epib gwc bmtt qb bw lw, vwb epib gwc eivb qb bw lw. cvsvwev",
+                "decifrado": "a computer program does what you tell it to do, not what you want it to do. unknown",
+                "token": "83ca049a9b840e7c1a64b0dc1d68c8f721e8bbca"
+            }], { type: "application/json" });
+            let form_data = new FormData();
+            let form_data2 = new FormData();
+            form_data.append('answer',b, 'answer')
+
+            form_data2.append('answer', 'answer.json')
             //let answer = form_data.get('answer');
             //console.log(answer);
             //let answer = document.createElement('iframe');
             //answer.src="/home/pacifique/NetBeansProjects/CodeNation challenge/answer.json";
-            const answer = document.getElementById('resposta');
-            answer.addEventListener('change',event => appendFiles(event.target.files));
+            //const answer = document.getElementById('resposta');
+            //answer.addEventListener('change',event => appendFiles(event.target.files));
             /*let answer;
             formulaire.onsubmit = async (e) => {
                 e.preventDefault();
@@ -53,7 +65,8 @@
                 alert(result.message);
                 
             }*/
-            XHR.send(answer);
+
+            XHR.send(form_data);
             XHR.onload = () => alert(XHR.response);
         }
 
